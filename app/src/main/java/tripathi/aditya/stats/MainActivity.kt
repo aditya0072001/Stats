@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
     internal lateinit var data: EditText
@@ -45,28 +46,33 @@ class MainActivity : AppCompatActivity() {
 
         mode.setOnClickListener(View.OnClickListener {
             if(data.getText().isNotEmpty()) {
-                var classData = data.getText().toString().split(",")
-                var cData= classData.map{it.toFloat()}
-                cData=cData.sorted()
-                var mCount=0
-                var count=0
-                var max=0.00
-                for(i in cData){
-                   count=0
-                    for (j in cData){
-                        if (j == i)
-                            ++count
-                    }
-                    if (count > mCount) {
-                        mCount = count;
-                        max = i.toDouble();
-                    }
+                try {
+                    var classData = data.getText().toString().split(",")
+                    var cData= classData.map{it.toFloat()}
+                    cData=cData.sorted()
+                    var mCount=0
+                    var count=0
+                    var max=0.00
+                    for(i in cData){
+                        count=0
+                        for (j in cData){
+                            if (j == i)
+                                ++count
+                        }
+                        if (count > mCount) {
+                            mCount = count;
+                            max = i.toDouble();
+                        }
 
+                    }
+                    if(max==0.00){
+                        calculate.append("\nThere is no Mode")
+                    }else{
+                        calculate.append("\nMode is "+max)
+                    }
                 }
-                if(max==0.00){
-                    calculate.append("\nThere is no Mode")
-                }else{
-                    calculate.append("\nMode is "+max)
+                catch (e:Exception) {
+                    Toast.makeText(applicationContext,"Enter Appropriate Values Buddy",Toast.LENGTH_SHORT).show()
                 }
             }else{
                 Toast.makeText(applicationContext,"Enter Something Buddy Please",Toast.LENGTH_SHORT).show()
@@ -76,18 +82,23 @@ class MainActivity : AppCompatActivity() {
 
     private fun calculateMedian() {
         median.setOnClickListener(View.OnClickListener {
+
             if(data.getText().isNotEmpty()) {
-                val classData = data.getText().toString().split(",")
-                var cData= classData.map{it.toFloat()}
-                cData=cData.sorted()
-                val size=cData.size
-                var valueM =0.00
-                if(size%2==0){
-                    valueM=(cData[(size/2)-1]+cData[(size/2)])/2.00
-                }else{
-                    valueM= cData[(size/2)].toDouble();
+                try {
+                    val classData = data.getText().toString().split(",")
+                    var cData= classData.map{it.toFloat()}
+                    cData=cData.sorted()
+                    val size=cData.size
+                    var valueM =0.00
+                    if(size%2==0){
+                        valueM=(cData[(size/2)-1]+cData[(size/2)])/2.00
+                    }else{
+                        valueM= cData[(size/2)].toDouble();
+                    }
+                    calculate.append("\nMedian is "+valueM)
+                }catch (e:Exception){
+                    Toast.makeText(applicationContext,"Enter Appropriate Values Buddy",Toast.LENGTH_SHORT).show()
                 }
-                calculate.append("\nMedian is "+valueM)
             }else{
                 Toast.makeText(applicationContext,"Enter Something Buddy Please",Toast.LENGTH_SHORT).show()
             }
@@ -97,10 +108,14 @@ class MainActivity : AppCompatActivity() {
     private fun calculateMean() {
         mean.setOnClickListener(View.OnClickListener {
             if(data.getText().isNotEmpty()) {
-                val classData = data.getText().toString().split(",")
-                val cData= classData.map{it.toFloat()}
-                val avg=cData.average()
-                calculate.append("\nMean is "+avg)
+                try{
+                    val classData = data.getText().toString().split(",")
+                    val cData= classData.map{it.toFloat()}
+                    val avg=cData.average()
+                    calculate.append("\nMean is "+avg)
+                }catch (e:Exception){
+                    Toast.makeText(applicationContext,"Enter Appropriate Values Buddy",Toast.LENGTH_SHORT).show()
+                }
             }else{
                 Toast.makeText(applicationContext,"Enter Something Buddy Please",Toast.LENGTH_SHORT).show()
             }
