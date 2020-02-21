@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         calculateMedian();
         calculateMode();
         resetResultValue();
+
     }
 
     private fun resetResultValue() {
@@ -82,7 +83,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun calculateMedian() {
         median.setOnClickListener(View.OnClickListener {
-
             if(data.getText().isNotEmpty()) {
                 try {
                     val classData = data.getText().toString().split(",")
