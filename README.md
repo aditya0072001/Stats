@@ -5,11 +5,10 @@ It's developed using  kotlin.
 ```
 
 ### ScreenShots
-```markdown
-![sc1](https://imgur.com/DDJUth4 "First Image")
-![sc2](https://imgur.com/DDJUth4 "Second Image")
 
-```
+[Image 1](https://i.imgur.com/DDJUth4.jpg)<br>
+[Image 2](https://i.imgur.com/1oPvhcY.jpg)
+
 
 ### Support or Contact
 
