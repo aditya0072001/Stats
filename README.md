@@ -6,8 +6,8 @@ It's developed using  kotlin.
 
 ### ScreenShots
 ```markdown
-![](https://imgur.com/DDJUth4)
-![](https://imgur.com/DDJUth4)
+![sc1](https://imgur.com/DDJUth4 "First Image")
+![sc2](https://imgur.com/DDJUth4 "Second Image")
 
 ```
 
