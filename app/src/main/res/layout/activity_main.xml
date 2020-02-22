@@ -8,6 +8,46 @@
     android:background="#DDDDDD"
     tools:context=".MainActivity">
 
+    <EditText
+        android:id="@+id/dataf"
+        android:layout_width="279dp"
+        android:layout_height="50dp"
+        android:background="@drawable/input"
+        android:hint="Enter frequencies"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.273" />
+
+    <Button
+        android:id="@+id/viewresult"
+        android:layout_width="148dp"
+        android:layout_height="42dp"
+        android:background="@drawable/reset"
+        android:text="View Result"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.136"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.458" />
+
+    <ToggleButton
+        android:id="@+id/mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="Mode"
+        android:textOn="Mode"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.826"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.366" />
+
     <TextView
         android:id="@+id/welcome"
         android:layout_width="300dp"
@@ -15,10 +55,11 @@
         android:text="Enter class interval seperated by comma"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.116" />
+        app:layout_constraintVertical_bias="0.023" />
 
     <EditText
         android:id="@+id/data"
@@ -29,75 +70,74 @@
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.285" />
-
-    <Button
-        android:id="@+id/mean"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mean"
-        android:background="@drawable/check"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.136"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.449" />
-
-    <Button
-        android:id="@+id/median"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Median"
-        android:background="@drawable/check"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.449" />
-
-    <Button
-        android:id="@+id/mode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mode"
-        android:background="@drawable/check"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.86"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.449" />
+        app:layout_constraintVertical_bias="0.199" />
 
     <TextView
-        android:id="@+id/calculate"
-        android:layout_width="354dp"
-        android:layout_height="208dp"
-        android:text="Calculated values will display here"
+        android:id="@+id/formulas"
+        android:layout_width="293dp"
+        android:layout_height="213dp"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.982"
+        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.868" />
+        app:layout_constraintVertical_bias="0.841" />
 
     <Button
         android:id="@+id/resetResult"
-        android:layout_width="193dp"
-        android:layout_height="64dp"
+        android:layout_width="148dp"
+        android:layout_height="42dp"
         android:background="@drawable/reset"
         android:text="Reset Result"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.463"
+        app:layout_constraintHorizontal_bias="0.836"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.551" />
+        app:layout_constraintVertical_bias="0.458" />
+
+    <ToggleButton
+        android:id="@+id/mean"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="Mean"
+        android:textOn="Mean"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.366" />
+
+    <ToggleButton
+        android:id="@+id/median"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="Median"
+        android:textOn="Median"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.366" />
+
+    <Switch
+        android:id="@+id/dataselect"
+        android:layout_width="304dp"
+        android:layout_height="45dp"
+        android:text="Un grouped Data / Grouped Data"
+        android:textOff="U"
+        android:textOn="G"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.107" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
