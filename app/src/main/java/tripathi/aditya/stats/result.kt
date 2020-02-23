@@ -19,15 +19,28 @@ class result : AppCompatActivity() {
         resultMedian =findViewById(R.id.resultMedian) as TextView
         resultMode =findViewById(R.id.resultMode) as TextView
 
-        var cInterval=intent.getStringArrayListExtra("Interval")
-        for(i in cInterval){
-            resultClassInterval.append("\n"+i+"\n")
-        }
-        var freq=intent.getStringArrayListExtra("Fre")
-        for(i in freq){
-            resultFrequency.append("\n"+i+"\n")
-        }
-        var mean=intent.getStringExtra("Mean")
+        var cResult=intent.getStringExtra("cResult")
+        if(cResult=="true"){
+            resultClassInterval.setText("C Interval")
+            resultFrequency.setText("Frequency")
+            resultMean.setText("Mean")
+            resultMedian.setText("Median")
+            resultMode.setText("Mode")
+        }else{
+            var cInterval=intent.getStringArrayListExtra("Interval")
+            for(i in cInterval){
+                resultClassInterval.append("\n"+i+"\n")
+            }
+            var freq=intent.getStringArrayListExtra("Fre")
+            for(i in freq){
+                resultFrequency.append("\n"+i+"\n")
+            }
+            var mean=intent.getStringExtra("Mean")
             resultMean.append("\n"+mean+"\n")
+            var median=intent.getStringExtra("Median")
+            resultMedian.append("\n"+median+"\n")
+            var mode=intent.getStringExtra("Mode")
+            resultMode.append("\n"+mode+"\n")
+        }
     }
 }

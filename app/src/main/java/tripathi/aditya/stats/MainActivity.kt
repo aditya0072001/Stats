@@ -27,6 +27,9 @@ class MainActivity : AppCompatActivity() {
     var checkMode =false
     var groupedData=false
     var fmean=0.00
+    var fmedian=0.00
+    var fmode=0.00
+    var clearResult=false
     var cData= listOf<String>()
     var freqData= listOf<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,13 +71,17 @@ Mode Z = L+((f1-f0)/(2⋅f1-f0-f2))⋅c"""
 
     private fun resetResultValue() {
         resetResult.setOnClickListener(View.OnClickListener {
-            if(data.getText().isNotEmpty()&&dataf.getText().isNotEmpty()){
+            if(data.getText().isNotEmpty()){
                 data.setText("")
                 dataf.setText("")
                 //calculate.setText("Calculated values will display here")
+                this.clearResult=false
+                Toast.makeText(applicationContext,"Result reset =false",Toast.LENGTH_SHORT).show()
             }else{
                 data.setText("")
                 dataf.setText("")
+                this.clearResult=true
+                Toast.makeText(applicationContext,"Result reset =true",Toast.LENGTH_SHORT).show()
                 //calculate.setText("Calculated values will display here")
             }
         })
@@ -90,6 +97,7 @@ Mode Z = L+((f1-f0)/(2⋅f1-f0-f2))⋅c"""
                     }else {
                         try {
                             var classData = data.getText().toString().split(",")
+                            this.cData=classData
                             var cData = classData.map { it.toFloat() }
                             cData = cData.sorted()
                             var mCount = 0
@@ -111,6 +119,7 @@ Mode Z = L+((f1-f0)/(2⋅f1-f0-f2))⋅c"""
                                 // calculate.append("\nThere is no Mode")
                             } else {
                                 // calculate.append("\nMode is "+max)
+                                this.fmode=max
                             }
                         } catch (e: Exception) {
                             Toast.makeText(
@@ -141,6 +150,7 @@ Mode Z = L+((f1-f0)/(2⋅f1-f0-f2))⋅c"""
                     }else{
                         try {
                             val classData = data.getText().toString().split(",")
+                            this.cData=classData
                             var cData= classData.map{it.toFloat()}
                             cData=cData.sorted()
                             val size=cData.size
@@ -151,6 +161,7 @@ Mode Z = L+((f1-f0)/(2⋅f1-f0-f2))⋅c"""
                                 valueM= cData[(size/2)].toDouble();
                             }
                             //calculate.append("\nMedian is "+valueM)
+                            this.fmedian=valueM
                         }catch (e:Exception){
                             Toast.makeText(applicationContext,"Enter Appropriate Values Buddy",Toast.LENGTH_SHORT).show()
                         }
@@ -167,36 +178,46 @@ Mode Z = L+((f1-f0)/(2⋅f1-f0-f2))⋅c"""
     }
 
     private fun calculateMean() {
+      // var fData= listOf<Float>()
+     //   var cData= listOf<Float>()
+      //  var mData= mutableListOf<Float>()
         mean.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) { // The toggle is enabled
                 checkMean=true
                 if(data.getText().isNotEmpty()) {
                     if(groupedData){
-                        try{
-                            this.cData=data.getText().toString().split(",")
-                            val classData = data.getText().toString().split(",","-")
-                            val cData= classData.map{it.toFloat()}
-                            val lData= mutableListOf<Float>()
-                            val rData= mutableListOf<Float>()
-                            var k=0
-                            var g=1
-                            var r=0
-                            while(r<=cData.size){
-                                lData[r]=cData[k]
-                                rData[r]=cData[g]
-                                g++
-                                r++
-                                k += 2
-                            }
-                            var f=0
-                            var mData= mutableListOf<Float>()
-                            while(f<=lData.size&&f<rData.size){
-                                mData[f]=lData[f]+rData[f]
-                                f++
-                            }
-                            val freqData = dataf.getText().toString().split(",")
-                            this.freqData=freqData
-                            val fData= freqData.map{it.toFloat()}
+                        try {
+                            this.cData = data.getText().toString().split(",")
+                            val classData = data.getText().toString().split(",", "-")
+                            val cData = classData.map { it.toFloat() }
+
+                                val lData = mutableListOf<Float>()
+                                val rData = mutableListOf<Float>()
+                                var k = 0
+                                var g = 1
+                                var r = 0
+                                while (r <= cData.size) {
+                                    lData[r] = cData[k]
+                                    rData[r] = cData[g]
+                                    g+=2
+                                    r++
+                                    k += 2
+                                }
+                                var f = 0
+                                var mData = mutableListOf<Float>()
+                                while (f <= lData.size && f <= rData.size) {
+                                    mData[f] = (lData[f] + rData[f])/2
+                                    f++
+                                }
+                                val freqData = dataf.getText().toString().split(",")
+                                this.freqData = freqData
+                           // Toast.makeText(applicationContext,"TOfloat 1",Toast.LENGTH_SHORT).show()
+                                var fData = freqData.map { it.toFloat() }
+                            //Toast.makeText(applicationContext,"TOfloat 2",Toast.LENGTH_SHORT).show()
+
+
+
+
                             var sumfx=0.00
                             var N=0.00
                             var j=0
@@ -209,7 +230,7 @@ Mode Z = L+((f1-f0)/(2⋅f1-f0-f2))⋅c"""
                             this.fmean=fmean
                             //calculate.append("\nMean is "+avg)
                         }catch (e:Exception){
-                            Toast.makeText(applicationContext,"Enter Appropriate Values Buddy",Toast.LENGTH_SHORT).show()
+                            Toast.makeText(applicationContext,"Error final freq",Toast.LENGTH_SHORT).show()
                         }
                     }else if(!groupedData){
                         try{
@@ -243,6 +264,9 @@ Mode Z = L+((f1-f0)/(2⋅f1-f0-f2))⋅c"""
             val df = DecimalFormat("##.##")
             df.setRoundingMode(RoundingMode.DOWN)
             intent.putExtra("Mean",df.format(fmean).toString())
+            intent.putExtra("Mode",df.format(fmode).toString())
+            intent.putExtra("Median",df.format(fmedian).toString())
+            intent.putExtra("cResult",clearResult.toString())
             startActivity(intent)
         })
     }
