@@ -76,15 +76,15 @@
 
     <TextView
         android:id="@+id/formulas"
-        android:layout_width="293dp"
-        android:layout_height="213dp"
+        android:layout_width="328dp"
+        android:layout_height="251dp"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintHorizontal_bias="0.543"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.841" />
+        app:layout_constraintVertical_bias="0.876" />
 
     <Button
         android:id="@+id/resetResult"

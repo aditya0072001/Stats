@@ -6,6 +6,10 @@ import android.view.View
 import android.widget.*
 import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatActivity
+//import java.awt.Event.DOWN
+import java.awt.*
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 
 class MainActivity : AppCompatActivity() {
@@ -38,7 +42,9 @@ class MainActivity : AppCompatActivity() {
         dataselect = findViewById(R.id.dataselect) as Switch
         formulas = findViewById(R.id.formulas) as TextView
         val temp= """Formulas 
-Mean x =∑fx/n"""
+Mean x =∑fx/n
+Median M = L+(n/2 -cf)/f ⋅c
+Mode Z = L+((f1-f0)/(2⋅f1-f0-f2))⋅c"""
         formulas.setText(temp);
         checkData();
         calculateMean();
@@ -49,13 +55,15 @@ Mean x =∑fx/n"""
     }
 
     private fun checkData(){
-        if(dataselect.isChecked()){
-            groupedData=true
-           // dataf.isEnabled(true)
-        }else if(!dataselect.isChecked()){
-            groupedData=false
-            //dataf.isEnabled(false)
-        }
+        dataselect.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener{buttonView, isChecked ->
+                if(isChecked){
+                    groupedData=true
+                    Toast.makeText(applicationContext,"Grouped",Toast.LENGTH_SHORT).show()
+                }else{
+                    groupedData=false
+                    Toast.makeText(applicationContext,"Un - Grouped",Toast.LENGTH_SHORT).show()
+                }
+        })
     }
 
     private fun resetResultValue() {
@@ -165,16 +173,34 @@ Mean x =∑fx/n"""
                 if(data.getText().isNotEmpty()) {
                     if(groupedData){
                         try{
-                            val classData = data.getText().toString().split(",")
-                            this.cData=classData
+                            this.cData=data.getText().toString().split(",")
+                            val classData = data.getText().toString().split(",","-")
                             val cData= classData.map{it.toFloat()}
+                            val lData= mutableListOf<Float>()
+                            val rData= mutableListOf<Float>()
+                            var k=0
+                            var g=1
+                            var r=0
+                            while(r<=cData.size){
+                                lData[r]=cData[k]
+                                rData[r]=cData[g]
+                                g++
+                                r++
+                                k += 2
+                            }
+                            var f=0
+                            var mData= mutableListOf<Float>()
+                            while(f<=lData.size&&f<rData.size){
+                                mData[f]=lData[f]+rData[f]
+                                f++
+                            }
                             val freqData = dataf.getText().toString().split(",")
                             this.freqData=freqData
                             val fData= freqData.map{it.toFloat()}
                             var sumfx=0.00
                             var N=0.00
                             var j=0
-                            for(i in cData){
+                            for(i in mData){
                                 sumfx += (i * fData[j]).toDouble()
                                 N+=fData[j]
                                 j++
@@ -214,7 +240,9 @@ Mean x =∑fx/n"""
             val intent = Intent(applicationContext, result::class.java)
             intent.putStringArrayListExtra("Interval",ArrayList(cData))
             intent.putExtra("Fre",ArrayList(freqData))
-            intent.putExtra("Mean",fmean.toString())
+            val df = DecimalFormat("##.##")
+            df.setRoundingMode(RoundingMode.DOWN)
+            intent.putExtra("Mean",df.format(fmean).toString())
             startActivity(intent)
         })
     }
