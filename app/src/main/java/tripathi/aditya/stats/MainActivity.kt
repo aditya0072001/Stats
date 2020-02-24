@@ -196,7 +196,7 @@ Mode Z = L+((f1-f0)/(2⋅f1-f0-f2))⋅c"""
                                 var k = 0
                                 var g = 1
                                 var r = 0
-                                while (r <= cData.size) {
+                                while (r <= cData.size&&k<=cData.size) {
                                     lData[r] = cData[k]
                                     rData[r] = cData[g]
                                     g+=2
@@ -205,7 +205,7 @@ Mode Z = L+((f1-f0)/(2⋅f1-f0-f2))⋅c"""
                                 }
                                 var f = 0
                                 var mData = mutableListOf<Float>()
-                                while (f <= lData.size && f <= rData.size) {
+                                while (f <= lData.size ) {
                                     mData[f] = (lData[f] + rData[f])/2
                                     f++
                                 }
