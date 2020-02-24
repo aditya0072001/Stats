@@ -191,22 +191,23 @@ Mode Z = L+((f1-f0)/(2⋅f1-f0-f2))⋅c"""
                             val classData = data.getText().toString().split(",", "-")
                             val cData = classData.map { it.toFloat() }
 
-                                val lData = mutableListOf<Float>()
-                                val rData = mutableListOf<Float>()
+                                var ldata = mutableListOf<Float>()
+                                var rdata = mutableListOf<Float>()
                                 var k = 0
                                 var g = 1
                                 var r = 0
-                                while (r <= cData.size&&k<=cData.size) {
-                                    lData[r] = cData[k]
-                                    rData[r] = cData[g]
+                                while (r < cData.size&&k<cData.size) {
+                                    ldata.add(cData[k])
+                                    rdata.add(cData[g])
                                     g+=2
                                     r++
                                     k += 2
                                 }
+                           // Toast.makeText(applicationContext,ldata.toString(),Toast.LENGTH_SHORT).show()
                                 var f = 0
                                 var mData = mutableListOf<Float>()
-                                while (f <= lData.size ) {
-                                    mData[f] = (lData[f] + rData[f])/2
+                                while (f < ldata.size ) {
+                                    mData.add((ldata[f] + rdata[f])/2)
                                     f++
                                 }
                                 val freqData = dataf.getText().toString().split(",")
