@@ -136,15 +136,21 @@ Mode Z = L+((f1-f0)/(2⋅f1-f0-f2))⋅c"""
                             postion=fData.indexOf(modef.toFloat())
                             if(postion==0){
                                 f0=0.00
-                                f2=fData[postion+1].toDouble()
+                               f2=fData[postion+1].toDouble()
                             }else{
                                 f0=fData[postion-1].toDouble()
-                                f2=fData[postion+1].toDouble()
+                                if (postion==fData.size-1 || postion>fData.size-1){
+                                    f2=0.00
+                                }else {
+                                        f2=fData[postion+1].toDouble()
+                                        //Toast.makeText(applicationContext,(postion+1).toString(),Toast.LENGTH_SHORT).show()
+                                }
                             }
                         }
                         var msize=rdata[0]-ldata[0]
-                        var modeff=ldata[postion]+((modef-f0)/(2*(modef-f0-f2))*msize)
+                        var modeff=ldata[postion]+((modef-f0)/(2*modef-f0-f2)*msize)
                         this.fmode=modeff
+
                     }else {
                         try {
                             var classData = data.getText().toString().split(",")
