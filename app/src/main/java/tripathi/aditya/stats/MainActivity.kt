@@ -94,6 +94,50 @@ Mode Z = L+((f1-f0)/(2⋅f1-f0-f2))⋅c"""
                 checkMode=true
                 if(data.getText().isNotEmpty()) {
                     if(groupedData){
+                        this.cData = data.getText().toString().split(",")
+                        val classData = data.getText().toString().split(",", "-")
+                        val cData = classData.map { it.toFloat() }
+
+                        var ldata = mutableListOf<Float>()
+                        var rdata = mutableListOf<Float>()
+                        var k = 0
+                        var g = 1
+                        var r = 0
+                        while (r < cData.size&&k<cData.size) {
+                            ldata.add(cData[k])
+                            rdata.add(cData[g])
+                            g+=2
+                            r++
+                            k += 2
+                        }
+
+                        val freqData = dataf.getText().toString().split(",")
+                        this.freqData = freqData
+                        var fData = freqData.map { it.toFloat() }
+
+                        var cfx=0.00
+                        var N=0.00
+                        var j=0
+                        var modef =0.00
+                        var postion =0
+                        var f0=0.00
+                        var f2=0.00
+                        if(fData.size==1){
+                            modef=fData[0].toDouble()
+                        }else{
+                            for(i in fData){
+                                if(i.toDouble()>modef&&j!=0){
+                                    modef=i.toDouble()
+                                    postion=j
+                                    f0=fData[j-1].toDouble()
+                                    f2=fData[j+1].toDouble()
+                                }
+                                j++
+                            }
+                        }
+                        var msize=rdata[postion]-ldata[postion]
+                        var modeff=ldata[postion]+((modef-f0)/((modef-f0)+(modef-f2))*msize)
+                        this.fmode=modeff
                     }else {
                         try {
                             var classData = data.getText().toString().split(",")
