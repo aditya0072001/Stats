@@ -171,22 +171,20 @@ Mode Z = L+((f1-f0)/(2⋅f1-f0-f2))⋅c"""
                         this.freqData = freqData
                         var fData = freqData.map { it.toFloat() }
 
-                        var sumfx=0.00
+                        var cfx=0.00
                         var N=0.00
                         var j=0
                         for(i in fData){
-                            sumfx += (i * fData[j]).toDouble()
+                            cfx += i .toDouble()
                             N+=fData[j]
                             if(j==middle){
-                                mcf=sumfx
+                                mcf=cfx-i
                                 mf= i.toDouble()
                             }
                             j++
                         }
-                        var medianf=mllimit+(((mllimit+mulimit)/mf)*((N+1)/2)-mcf)
-                        if (medianf<0){
-                            medianf= -medianf
-                        }
+                        var limit=mulimit-mllimit
+                        var medianf=mllimit+((limit/mf)*(N/2)-mcf)
                         this.fmedian=medianf
                     }else{
                         try {
