@@ -125,17 +125,24 @@ Mode Z = L+((f1-f0)/(2⋅f1-f0-f2))⋅c"""
                         if(fData.size==1){
                             modef=fData[0].toDouble()
                         }else{
-                            for(i in fData){
-                                if(i.toDouble()>modef&&j!=0){
+                           /* for(i in fData){
+                                if(i.toDouble()>modef){
                                     modef=i.toDouble()
                                     postion=j
                                 }
                                 j++
+                            }*/
+                            modef= fData.max()!!.toDouble()
+                            postion=fData.indexOf(modef.toFloat())
+                            if(postion==0){
+                                f0=0.00
+                                f2=fData[postion+1].toDouble()
+                            }else{
+                                f0=fData[postion-1].toDouble()
+                                f2=fData[postion+1].toDouble()
                             }
-                            f0=fData[postion-1].toDouble()
-                            f2=fData[postion+1].toDouble()
                         }
-                        var msize=rdata[postion]-ldata[postion]
+                        var msize=rdata[0]-ldata[0]
                         var modeff=ldata[postion]+((modef-f0)/(2*(modef-f0-f2))*msize)
                         this.fmode=modeff
                     }else {
