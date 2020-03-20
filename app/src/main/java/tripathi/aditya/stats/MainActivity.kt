@@ -146,7 +146,48 @@ Mode Z = L+((f1-f0)/(2⋅f1-f0-f2))⋅c"""
                 checkMedian=true
                 if(data.getText().isNotEmpty()) {
                     if(groupedData){
+                        this.cData = data.getText().toString().split(",")
+                        val classData = data.getText().toString().split(",", "-")
+                        val cData = classData.map { it.toFloat() }
 
+                        var ldata = mutableListOf<Float>()
+                        var rdata = mutableListOf<Float>()
+                        var k = 0
+                        var g = 1
+                        var r = 0
+                        while (r < cData.size&&k<cData.size) {
+                            ldata.add(cData[k])
+                            rdata.add(cData[g])
+                            g+=2
+                            r++
+                            k += 2
+                        }
+                        val middle=ldata.size/2
+                        var mllimit=ldata[middle]
+                        var mulimit =rdata[middle]
+                        var mcf=0.00
+                        var mf=0.00
+                        val freqData = dataf.getText().toString().split(",")
+                        this.freqData = freqData
+                        var fData = freqData.map { it.toFloat() }
+
+                        var sumfx=0.00
+                        var N=0.00
+                        var j=0
+                        for(i in fData){
+                            sumfx += (i * fData[j]).toDouble()
+                            N+=fData[j]
+                            if(j==middle){
+                                mcf=sumfx
+                                mf= i.toDouble()
+                            }
+                            j++
+                        }
+                        var medianf=mllimit+(((mllimit+mulimit)/mf)*((N+1)/2)-mcf)
+                        if (medianf<0){
+                            medianf= -medianf
+                        }
+                        this.fmedian=medianf
                     }else{
                         try {
                             val classData = data.getText().toString().split(",")
