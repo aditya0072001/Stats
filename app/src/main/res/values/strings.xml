@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Stats</string>
+    <string name="enter_frequencies">Enter frequencies</string>
+    <string name="view_result">View Result</string>
+    <string name="mode">Mode</string>
+    <string name="enter_class_interval_seperated_by_comma">Enter class interval seperated by comma for ungrouped data.\nEnter class interval seperated by comma and - for grouped data .</string>
+    <string name="enter_class_intervals">Enter class intervals</string>
+    <string name="reset_result">Reset Result</string>
+    <string name="mean">Mean</string>
+    <string name="median">Median</string>
+    <string name="un_grouped_data_grouped_data">Un grouped Data / Grouped Data</string>
+    <string name="u">U</string>
+    <string name="g">G</string>
 </resources>

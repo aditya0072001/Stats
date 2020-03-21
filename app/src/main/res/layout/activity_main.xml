@@ -13,47 +13,47 @@
         android:layout_width="279dp"
         android:layout_height="50dp"
         android:background="@drawable/input"
-        android:hint="Enter frequencies"
+        android:hint="@string/enter_frequencies"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.273" />
+        app:layout_constraintVertical_bias="0.303" />
 
     <Button
         android:id="@+id/viewresult"
         android:layout_width="148dp"
         android:layout_height="42dp"
         android:background="@drawable/reset"
-        android:text="View Result"
+        android:text="@string/view_result"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.136"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.458" />
+        app:layout_constraintVertical_bias="0.499" />
 
     <ToggleButton
         android:id="@+id/mode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textOff="Mode"
-        android:textOn="Mode"
+        android:textOff="@string/mode"
+        android:textOn="@string/mode"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.826"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.366" />
+        app:layout_constraintVertical_bias="0.409" />
 
     <TextView
         android:id="@+id/welcome"
-        android:layout_width="300dp"
-        android:layout_height="42dp"
-        android:text="Enter class interval seperated by comma"
-        android:textSize="16dp"
+        android:layout_width="304dp"
+        android:layout_height="88dp"
+        android:text="@string/enter_class_interval_seperated_by_comma"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -66,19 +66,19 @@
         android:layout_width="279dp"
         android:layout_height="50dp"
         android:background="@drawable/input"
-        android:hint="Enter class intervals"
+        android:hint="@string/enter_class_intervals"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.199" />
+        app:layout_constraintVertical_bias="0.229" />
 
     <TextView
         android:id="@+id/formulas"
         android:layout_width="328dp"
         android:layout_height="251dp"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.543"
@@ -91,53 +91,53 @@
         android:layout_width="148dp"
         android:layout_height="42dp"
         android:background="@drawable/reset"
-        android:text="Reset Result"
+        android:text="@string/reset_result"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.836"
+        app:layout_constraintHorizontal_bias="0.855"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.458" />
+        app:layout_constraintVertical_bias="0.499" />
 
     <ToggleButton
         android:id="@+id/mean"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textOff="Mean"
-        android:textOn="Mean"
+        android:textOff="@string/mean"
+        android:textOn="@string/mean"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.366" />
+        app:layout_constraintVertical_bias="0.409" />
 
     <ToggleButton
         android:id="@+id/median"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textOff="Median"
-        android:textOn="Median"
+        android:textOff="@string/median"
+        android:textOn="@string/median"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.366" />
+        app:layout_constraintVertical_bias="0.409" />
 
     <Switch
         android:id="@+id/dataselect"
         android:layout_width="304dp"
         android:layout_height="45dp"
-        android:text="Un grouped Data / Grouped Data"
-        android:textOff="U"
-        android:textOn="G"
+        android:text="@string/un_grouped_data_grouped_data"
+        android:textOff="@string/u"
+        android:textOn="@string/g"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.107" />
+        app:layout_constraintVertical_bias="0.161" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
